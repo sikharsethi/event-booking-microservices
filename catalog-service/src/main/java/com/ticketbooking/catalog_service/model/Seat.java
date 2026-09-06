@@ -2,6 +2,7 @@ package com.ticketbooking.catalog_service.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "seats")
@@ -16,6 +17,8 @@ public class Seat {
 
     @Enumerated(EnumType.STRING)
     private SeatStatus status;
+
+    private BigDecimal ticketPrice;
 
     @ManyToOne
     @JoinColumn(name = "event_id")
