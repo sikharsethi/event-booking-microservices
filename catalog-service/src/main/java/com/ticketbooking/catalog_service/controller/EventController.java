@@ -2,6 +2,7 @@ package com.ticketbooking.catalog_service.controller;
 
 import com.ticketbooking.catalog_service.dto.EventCreateRequestDto;
 import com.ticketbooking.catalog_service.dto.EventResponseDto;
+import com.ticketbooking.catalog_service.dto.SeatResponseDto;
 import com.ticketbooking.catalog_service.service.EventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -27,5 +28,11 @@ public class EventController {
     public ResponseEntity<List<EventResponseDto>> getAllEvents() {
         List<EventResponseDto> events = eventService.getAllEvents();
         return new ResponseEntity<>(events, HttpStatus.OK);
+    }
+
+    @GetMapping("/{eventId}/seats")
+    public ResponseEntity<List<SeatResponseDto>> getSeatsByEventId(@PathVariable Long eventId) {
+        List<SeatResponseDto> seats = eventService.getSeatsByEventId(eventId);
+        return new ResponseEntity<>(seats, HttpStatus.OK);
     }
 }

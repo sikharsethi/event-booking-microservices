@@ -2,6 +2,8 @@ package com.ticketbooking.catalog_service.service;
 
 import com.ticketbooking.catalog_service.dto.EventCreateRequestDto;
 import com.ticketbooking.catalog_service.dto.EventResponseDto;
+import com.ticketbooking.catalog_service.dto.SeatResponseDto;
+import com.ticketbooking.catalog_service.exception.EventNotFoundException;
 import com.ticketbooking.catalog_service.model.Event;
 import com.ticketbooking.catalog_service.model.Seat;
 import com.ticketbooking.catalog_service.model.SeatStatus;
@@ -21,14 +23,14 @@ public class EventService {
     private final SeatRepository seatRepository;
 
     public EventResponseDto createEvent(EventCreateRequestDto requestDto) {
-        // Step 1: make Event and Save
+        // Step 1: Event banao aur save karo
         Event event = new Event();
         event.setName(requestDto.getName());
         event.setVenue(requestDto.getVenue());
         event.setEventDateTime(requestDto.getEventDateTime());
         Event savedEvent = eventRepository.save(event);
 
-        // Step 2: Seats generate (A1, A2, A3...)
+        // Step 2: Seats generate karo (A1, A2, A3...)
         List<Seat> seats = new ArrayList<>();
         for (int i = 1; i <= requestDto.getTotalSeats(); i++) {
             Seat seat = new Seat();
@@ -40,14 +42,14 @@ public class EventService {
         }
         seatRepository.saveAll(seats);
 
-        // Step 3: Response DTO
+        // Step 3: Response DTO banao
         EventResponseDto responseDto = new EventResponseDto();
         responseDto.setId(savedEvent.getId());
         responseDto.setName(savedEvent.getName());
         responseDto.setVenue(savedEvent.getVenue());
         responseDto.setEventDateTime(savedEvent.getEventDateTime());
         responseDto.setTotalSeats(requestDto.getTotalSeats());
-        responseDto.setAvailableSeats(requestDto.getTotalSeats()); // available all new seats
+        responseDto.setAvailableSeats(requestDto.getTotalSeats());
 
         return responseDto;
     }
@@ -78,5 +80,24 @@ public class EventService {
         }
 
         return responseDtos;
+    }
+
+    public List<SeatResponseDto> getSeatsByEventId(Long eventId) {
+        Event event = eventRepository.findById(eventId)
+                .orElseThrow(() -> new EventNotFoundException("Event not found with id: " + eventId));
+
+        List<Seat> seats = event.getSeats();
+        List<SeatResponseDto> seatResponseDtos = new ArrayList<>();
+
+        for (Seat seat : seats) {
+            SeatResponseDto dto = new SeatResponseDto();
+            dto.setId(seat.getId());
+            dto.setSeatNumber(seat.getSeatNumber());
+            dto.setStatus(seat.getStatus());
+            dto.setTicketPrice(seat.getTicketPrice());
+            seatResponseDtos.add(dto);
+        }
+
+        return seatResponseDtos;
     }
 }
