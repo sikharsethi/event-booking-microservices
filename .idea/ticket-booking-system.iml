@@ -11,5 +11,7 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:4.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-jpa:4.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.46" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:3.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-web:7.0.9" level="project" />
   </component>
 </module>
