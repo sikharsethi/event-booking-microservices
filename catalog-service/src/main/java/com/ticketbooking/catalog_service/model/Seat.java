@@ -1,12 +1,15 @@
 package com.ticketbooking.catalog_service.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "seats")
-@Data
+@Getter
+@Setter
 public class Seat {
 
     @Id
