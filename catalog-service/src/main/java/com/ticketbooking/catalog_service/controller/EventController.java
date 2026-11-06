@@ -37,4 +37,10 @@ public class EventController {
         List<SeatResponseDto> seats = eventService.getSeatsByEventId(eventId);
         return new ResponseEntity<>(seats, HttpStatus.OK);
     }
+
+    @GetMapping("/{eventId}/seats/{seatId}")
+    public ResponseEntity<SeatResponseDto> getSeat(@PathVariable Long eventId,
+                                                   @PathVariable Long seatId) {
+        return new ResponseEntity<>(eventService.getSeat(eventId, seatId), HttpStatus.OK);
+    }
 }

@@ -4,6 +4,7 @@ import com.ticketbooking.catalog_service.dto.EventCreateRequestDto;
 import com.ticketbooking.catalog_service.dto.EventResponseDto;
 import com.ticketbooking.catalog_service.dto.SeatResponseDto;
 import com.ticketbooking.catalog_service.exception.EventNotFoundException;
+import com.ticketbooking.catalog_service.exception.SeatNotFoundException;
 import com.ticketbooking.catalog_service.model.Event;
 import com.ticketbooking.catalog_service.model.Seat;
 import com.ticketbooking.catalog_service.model.SeatStatus;
@@ -99,5 +100,18 @@ public class EventService {
         }
 
         return seatResponseDtos;
+    }
+
+    public SeatResponseDto getSeat(Long eventId, Long seatId) {
+        Seat seat = seatRepository.findByIdAndEventId(seatId, eventId)
+                .orElseThrow(() -> new SeatNotFoundException(
+                        "Seat " + seatId + " not found for event " + eventId));
+
+        SeatResponseDto dto = new SeatResponseDto();
+        dto.setId(seat.getId());
+        dto.setSeatNumber(seat.getSeatNumber());
+        dto.setStatus(seat.getStatus());
+        dto.setTicketPrice(seat.getTicketPrice());
+        return dto;
     }
 }

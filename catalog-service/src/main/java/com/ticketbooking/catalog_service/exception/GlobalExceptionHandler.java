@@ -26,6 +26,16 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(SeatNotFoundException.class)
+    public ResponseEntity<ErrorResponseDto> handleSeatNotFound(SeatNotFoundException ex) {
+        ErrorResponseDto errorResponse = new ErrorResponseDto(
+                ex.getMessage(),
+                HttpStatus.NOT_FOUND.value(),
+                LocalDateTime.now()
+        );
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationErrors(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();

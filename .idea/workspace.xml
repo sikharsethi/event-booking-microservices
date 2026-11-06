@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f96bdc5-6b9c-4b07-b555-c3abfa97923c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketbooking/booking_service/controller/BookingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketbooking/booking_service/dto/ErrorResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketbooking/booking_service/dto/SeatLockRequestDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketbooking/booking_service/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketbooking/booking_service/exception/SeatAlreadyLockedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/booking-service/src/main/java/com/ticketbooking/booking_service/service/SeatLockService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/com/ticketbooking/catalog_service/exception/SeatNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/ticketbooking/catalog_service/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/com/ticketbooking/catalog_service/controller/EventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/ticketbooking/catalog_service/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/com/ticketbooking/catalog_service/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/ticketbooking/catalog_service/repository/SeatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/com/ticketbooking/catalog_service/repository/SeatRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/ticketbooking/catalog_service/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/com/ticketbooking/catalog_service/service/EventService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
