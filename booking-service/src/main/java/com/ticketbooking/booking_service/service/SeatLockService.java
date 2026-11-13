@@ -24,4 +24,5 @@ public class SeatLockService {
     private String buildKey(Long eventId, Long seatId) {
         return "seat:" + eventId + ":" + seatId;
     }
+
 }
