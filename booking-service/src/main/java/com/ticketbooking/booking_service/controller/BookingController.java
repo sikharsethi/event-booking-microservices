@@ -1,7 +1,7 @@
 package com.ticketbooking.booking_service.controller;
 
-import com.ticketbooking.booking_service.dto.SeatDetailsDto;
 import com.ticketbooking.booking_service.dto.SeatLockRequestDto;
+import com.ticketbooking.booking_service.model.Booking;
 import com.ticketbooking.booking_service.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +18,11 @@ public class BookingController {
 
     @PostMapping("/lock")
     public ResponseEntity<Map<String, Object>> lockSeat(@RequestBody SeatLockRequestDto request) {
-        SeatDetailsDto seat = bookingService.reserveSeat(request);
+        Booking booking = bookingService.reserveSeat(request);
         return ResponseEntity.ok(Map.of(
-                "message", "Seat locked for 5 minutes",
-                "seatNumber", seat.getSeatNumber(),
-                "amount", seat.getTicketPrice()));
+                "bookingId", booking.getId(),
+                "status", booking.getStatus(),
+                "amount", booking.getTotalAmount(),
+                "lockExpirationTime", booking.getLockExpirationTime().toString()));
     }
 }
